@@ -2,42 +2,25 @@ package me.zeroest.prat2_ch02
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.NumberPicker
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val clearButton by lazy {
-        findViewById<Button>(R.id.clearButton)
-    }
-
-    private val addButton by lazy {
-        findViewById<Button>(R.id.addButton)
-    }
-
-    private val runButton by lazy {
-        findViewById<Button>(R.id.runButton)
-    }
-
-    private val numberPicker by lazy {
-        findViewById<NumberPicker>(R.id.numberPicker)
-    }
-
     private val numberTextViewList: List<TextView> by lazy {
         listOf<TextView>(
-            findViewById<TextView>(R.id.firstNumberTextView),
-            findViewById<TextView>(R.id.secondNumberTextView),
-            findViewById<TextView>(R.id.thirdNumberTextView),
-            findViewById<TextView>(R.id.fourthNumberTextView),
-            findViewById<TextView>(R.id.fifthNumberTextView),
-            findViewById<TextView>(R.id.sixthNumberTextView),
+            findViewById(R.id.firstNumberTextView),
+            findViewById(R.id.secondNumberTextView),
+            findViewById(R.id.thirdNumberTextView),
+            findViewById(R.id.fourthNumberTextView),
+            findViewById(R.id.fifthNumberTextView),
+            findViewById(R.id.sixthNumberTextView),
         )
     }
-    private var didRun = false;
+    private var didRun = false
     private val pickNumberSet = mutableSetOf<Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {

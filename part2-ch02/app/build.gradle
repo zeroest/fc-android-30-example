@@ -33,6 +33,7 @@ android {
 }
 
 dependencies {
+    apply plugin: 'kotlin-android-extensions' // 익스텐션 플러그인 적용
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'
