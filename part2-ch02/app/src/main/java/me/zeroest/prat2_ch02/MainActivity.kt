@@ -12,12 +12,12 @@ class MainActivity : AppCompatActivity() {
 
     private val numberTextViewList: List<TextView> by lazy {
         listOf<TextView>(
-            findViewById(R.id.firstNumberTextView),
-            findViewById(R.id.secondNumberTextView),
-            findViewById(R.id.thirdNumberTextView),
-            findViewById(R.id.fourthNumberTextView),
-            findViewById(R.id.fifthNumberTextView),
-            findViewById(R.id.sixthNumberTextView),
+            firstNumberTextView,
+            secondNumberTextView,
+            thirdNumberTextView,
+            fourthNumberTextView,
+            fifthNumberTextView,
+            sixthNumberTextView,
         )
     }
     private var didRun = false
@@ -44,9 +44,6 @@ class MainActivity : AppCompatActivity() {
 
             list.forEachIndexed{index, number ->
                 val textView = numberTextViewList[index]
-
-//                textView.text = number.toString();
-//                textView.isVisible = true;
                 showNumber(textView, number)
             }
 
@@ -76,8 +73,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             val textView = numberTextViewList[pickNumberSet.size]
-//            textView.isVisible = true
-//            textView.text = numberPicker.value.toString()
             showNumber(textView, numberPicker.value)
 
             pickNumberSet.add(numberPicker.value)
