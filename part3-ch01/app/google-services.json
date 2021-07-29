@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "711858910780",
+    "project_id": "fc-part3-ch01",
+    "storage_bucket": "fc-part3-ch01.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711858910780:android:c2ab4be75f42e884767539",
+        "android_client_info": {
+          "package_name": "me.zeroest.part3_ch01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711858910780-6f8segbj9593a3pk8ckgrralrag6jr7t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCroUmuOBYbllzFByUarOPu73R7_5ThANk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711858910780-6f8segbj9593a3pk8ckgrralrag6jr7t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
