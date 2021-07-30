@@ -3,9 +3,14 @@ package me.zeroest.part3_ch01
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
+import android.app.PendingIntent
+import android.app.PendingIntent.FLAG_UPDATE_CURRENT
 import android.content.Context
+import android.content.Intent
+import android.media.RingtoneManager
 import android.os.Build
 import android.util.Log
+import android.widget.RemoteViews
 import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -40,7 +45,7 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
 
         // 노티를 직접 띄운다.
         NotificationManagerCompat.from(this)
-            .notify(1, createNotification(title, message))
+            .notify(1, createNotification(type, title, message))
     }
 
     private fun createNotificationChannel() {
@@ -58,15 +63,61 @@ class MyFirebaseMessagingService: FirebaseMessagingService() {
     }
 
     private fun createNotification(
+        type: NotificationType,
         title: String?,
         message: String?
     ): Notification {
-        return NotificationCompat.Builder(this, CHANNEL_ID)
+        val intent = Intent(this, MainActivity::class.java)
+            .apply {
+                putExtra("notificationType", "${type.title} 타입")
+                // 기존 activity를 갱신하여 사용한다 즉 스택에 동일한 activity가 추가되지 않는다
+                // onNewIntent 메서드가 호출된다.
+                addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            }
+        val pendingIntent = PendingIntent.getActivity(this, type.id, intent, FLAG_UPDATE_CURRENT)
+
+        val notificationBuilder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_baseline_waves_24)
             .setContentTitle(title)
             .setContentText(message)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .build()
+            .setSound(RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION))
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+
+        when (type) {
+            NotificationType.NORMAL -> Unit
+            NotificationType.EXPANDABLE -> {
+                notificationBuilder.setStyle(
+                    NotificationCompat.BigTextStyle()
+                        .bigText("""
+😀 😃 😄 😁 😆 😅 😂 🤣 🥲 ☺️ 😊 😇 🙂 🙃 😉 😌 😍 🥰
+😘 😗 😙 😚 😋 😛 😝 😜 🤪 🤨 🧐 🤓 😎 🥸 🤩 🥳 😏 😒
+😞 😔 😟 😕 🙁 ☹️ 😣 😖 😫 😩 🥺 😢 😭 😤 😠 😡 🤬 🤯
+😳 🥵 🥶 😱 😨 😰 😥 😓 🤗 🤔 🤭 🤫 🤥 😶 😐 😑 😬 🙄
+😯 😦 😧 😮 😲 🥱 😴 🤤 😪 😵 🤐 🥴 🤢 🤮 🤧 😷 🤒 🤕
+🤑 🤠 😈 👿 👹 👺 🤡 💩 👻 💀 ☠️ 👽 👾 🤖 🎃 😺 😸 😹
+😻 😼 😽 🙀 😿 😾""")
+                )
+            }
+            NotificationType.CUSTOM -> {
+                notificationBuilder.setStyle(
+                    NotificationCompat.DecoratedCustomViewStyle()
+                )
+                    .setCustomContentView(
+                        RemoteViews(
+                            packageName,
+                            R.layout.view_custom_notification
+                        )
+                            .apply {
+                                setTextViewText(R.id.title, title)
+                                setTextViewText(R.id.message, message)
+                            }
+                    )
+            }
+        }
+
+        return notificationBuilder.build()
     }
 
     companion object {
