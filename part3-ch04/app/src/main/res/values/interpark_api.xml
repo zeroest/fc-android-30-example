@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="interparkUrl">http://book.interpark.com</string>
+    <string name="interparkApiKey">34B2B5D4AB655D33C8E5E6728C07554B4C4CF9702BE104D33417188F630C3B25</string>
+</resources>

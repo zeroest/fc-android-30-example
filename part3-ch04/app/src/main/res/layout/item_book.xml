@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/coverImageView"
+        android:layout_width="100dp"
+        android:layout_height="130dp"
+        android:background="@drawable/background_gray_stroke_radius_16"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@drawable/ic_launcher_foreground" />
+
+    <TextView
+        android:id="@+id/titleTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:ellipsize="end"
+        android:lines="1"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/coverImageView"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="미래의 부" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:ellipsize="end"
+        android:maxLines="5"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/titleTextView"
+        app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+        tools:text="석유는 데이터로, 부동산은 데이터센터로코로나19가 가속화한 4차 산업혁명 시대 부의 흐름을 따라잡기 위한 가장 친절하고 직관적인 안내서코로나바이러스감염증-19(이하 코로나19)로 인류는 서로 접촉하지 않는, 이른바 ‘언택트 시대’로 접어들었다. 불과 2년 전까지만 해도 선택의 영역이었던 인공지능과 IT 기술이 코로나19를 기점으로 일상 전반을 지배하게 된 것이다. 2020년 8월, 미국을 대표하는 30개 기업의 주가지수를 보여주는 다우지수가 석유기업 엑슨모빌을 92년 만에 퇴출하고, 그 자리에 클라우드 기업 세일즈포스를 올린 것은 석유 경제로 대표되던 3차 산업혁명 시대가 저물고 4차 산업혁명의 시대가 도래했음을 알린 상징적 사건이었다. " />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
